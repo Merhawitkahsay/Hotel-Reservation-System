@@ -1,0 +1,32 @@
+
+What is it? The project's "ID card" and "shopping list."
+
+What goes in it? Your project's name, version, and a list of all its dependencies (like express, pg, bcrypt) and scripts (like npm run dev).
+
+Why is it needed? It's the master file for Node.js. It tells everyone what's needed to run the project. You run npm install to install everything on this list.
+
+
+{
+  "name": "hotel-reservation-backend",
+  "version": "1.0.0",
+  "description": "Backend for Hotel Reservation System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

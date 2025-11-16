@@ -1,0 +1,109 @@
+
+// Root Level
+
+package.json
+
+What is it? The project's "ID card" and "shopping list."
+
+What goes in it? Your project's name, version, and a list of all its dependencies (like express, pg, bcrypt) and scripts (like npm run dev).
+
+Why is it needed? It's the master file for Node.js. It tells everyone what's needed to run the project. You run npm install to install everything on this list.
+
+
+
+.env
+
+What is it? A secret file for your environment variables.
+
+What goes in it? All your secrets: DB_PASSWORD, DB_USER, JWT_SECRET, PORT.
+
+Why is it needed? To keep your secret passwords out of your code. You never share this file publicly.
+
+
+
+
+.gitignore
+
+What is it? A "do not share" list for Git (version control).
+
+What goes in it? A list of files and folders to ignore, most importantly node_modules/ and .env.
+
+Why is it needed? It keeps your Git repository clean and prevents you from accidentally uploading thousands of library files or your secret passwords.
+
+
+
+
+server.js (or app.js)
+
+What is it? The "General Manager." This is the main entry point that starts your entire server.
+
+What goes in it? Code to create the Express app (const app = express()), connect middleware (app.use(express.json())), link to your routes (app.use('/api', routes)), and start the server (app.listen()).
+
+Why is it needed? It's the file you run (e.g., node server.js) to turn the server on. It's the "conductor" that brings all the other pieces together.
+
+
+
+
+1. config/ (The Manager's Office)
+What is it? This is the manager's office. It holds all the keys and secret connection information.
+
+What files go in it? db.js
+
+What does it do? This folder's job is to connect to your database. Your db.js file reads your .env file (which has the secret password), creates the connection Pool to PostgreSQL, and shares that connection with the rest of your app.
+
+Why is it needed? It keeps all your secret connections in one safe place.
+
+
+2. routes/ (The Restaurant Menu)
+What is it? This is the menu you give to the customer (the frontend).
+
+What files go in it? authRoutes.js, roomRoutes.js, reservationRoutes.js.
+
+What does it do? It defines the URLs. It lists all the "dishes" your API offers, like POST /auth/register or GET /rooms. It does no work. It just takes the order and hands it to the correct "Head Chef" (the Controller).
+
+Why is it needed? It keeps your server.js file clean and organizes all your API addresses in one easy-to-find place.
+
+
+Shutterstock
+
+
+3. middleware/ (The Security Guard)
+What is it? This is the security guard who stands at the kitchen door.
+
+What files go in it? authMiddleware.js.
+
+What does it do? It's a function that runs before the Controller. Its main job is to check for a login token (JWT). If the user sends a valid token, the guard lets them in. If not, the guard kicks them out (sends a 401 Unauthorized error).
+
+Why is it needed? To protect your routes. You don't want just anyone to be able to see GET /reservations/all.
+
+
+
+4. controllers/ (The Head Chefs)
+What is it? These are the Head Chefs for each section (Auth, Rooms, etc.).
+
+What files go in it? authController.js, roomController.js.
+
+What does it do? This file manages the request. It's the "brain." It handles the (req, res) objects. It takes the order from the "Menu" (Route), performs validation, and tells the "Line Cooks" (Models) what to do. When the "food" (data) is ready, the Head Chef "plates" it and sends it back (res.json(...)).
+
+Why is it needed? It separates your logic (the "how-to") from your routes (the "where-to").
+
+
+
+5. models/ (The Recipe Book & Line Cooks)
+What is it? This is the recipe book and the line cooks who actually make the food. This is the only part of your kitchen that touches the ingredients (the database).
+
+What files go in it? userModel.js, roomModel.js, alumniModel.js.
+
+What does it do? This is where all your SQL queries live. Functions like findUserByEmail or createUser are in here. They take simple instructions from the "Head Chef" (Controller), run the correct SQL query on the database, and return the raw data.
+
+Why is it needed? This is the most important separation. It keeps all your database code in one place. If you ever change a table name (like alumnirecords to alumni_records), you only have to fix it in this one folder.
+
+
+6. utils/ (The Kitchen Toolbox)
+What is it? This is the toolbox of shared kitchen tools.
+
+What files go in it? passwordHasher.js, jwtGenerator.js.
+
+What does it do? It holds small, reusable helper functions that everyone needs. Both the authController and userController might need to hash a password, so they both use the "tool" from this toolbox instead of writing the code twice.
+
+Why is it needed? To keep your code "DRY" (Don't Repeat Yourself). It's a place for common, shared tools.

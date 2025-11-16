@@ -1,0 +1,153 @@
+The Hotel Kitchen Analogy
+
+///////////////////
+This is your React application. It's the "Front of House"—everything the customer (user) sees, touches, and interacts with. It's the clean, beautiful lobby and dining area. Its job is to look good, take orders, and show the results.
+
+Here's who everyone is:
+
+1. index.html (The Building)
+What it is: The physical building of the restaurant.
+
+What's in it: A very simple, empty shell. The most important part is the front door: <div id="root"></div>.
+
+Why it's needed: This is the single HTML file the user's browser loads. React (the "Host") then injects the entire restaurant (all your components) inside this one "front door."
+
+2. main.jsx (The Host/Hostess)
+What it is: The Host or Hostess who stands at the front door.
+
+What it does: This file's only job is to greet the customer, open the "front door" (<div id="root">), and place the main <App /> component (the "Floor Manager") inside.
+
+Why it's needed: It's the "ignition key" that officially starts the React app.
+
+3. App.jsx (The Floor Manager)
+What it is: The Floor Manager who directs all the customer traffic.
+
+What it does: This file contains your Router. It looks at the customer's "request" (the URL in the browser) and tells them which "table" (Page) to go to.
+
+Why it's needed: It's the main "air traffic controller" for your pages, telling React what to show when the URL changes (e.g., show the LoginPage component when the URL is /login).
+
+4. pages/ (The Dining Sections)
+What they are: The different sections of the restaurant.
+
+What's in it: HomePage.jsx (the Main Dining Hall), LoginPage.jsx (the Check-in Desk), MyBookingsPage.jsx (the private "VIP Section").
+
+Why they're needed: These "smart" components assemble a full page. A "page" is just a collection of "furniture" (Components) arranged for a specific purpose.
+
+5. components/ (The Furniture & Tableware)
+What it is: The "LEGO Box" of all your reusable furniture and tableware.
+
+What's in it: Small, "dumb" pieces: Button.jsx (a chair), RoomCard.jsx (a table setting), Navbar.jsx (the main menu board on the wall), Footer.jsx (the "exit" sign).
+
+Why it's needed: Reusability! You don't want to build a new "chair" for every single page. You just grab the standard, pre-built <Button /> component from this box.
+
+6. layouts/ (The Restaurant Decor)
+What it is: The standard decor and layout of the restaurant.
+
+What's in it: A file like MainLayout.jsx. This component acts like a "picture frame." It puts the Navbar.jsx (Furniture) at the top, the Footer.jsx (Furniture) at the bottom, and then renders the specific "Dining Section" (Page) in the middle.
+
+Why it's needed: So you don't have to add the Navbar and Footer to every single page by hand. You just wrap your page in this "frame."
+
+7. services/ (The Waiter's Handheld Terminal)
+What it is: The digital handheld terminal or "phone" that the waiters use to send orders directly to the kitchen (the backend).
+
+What's in it: Files like authService.js and roomService.js. They contain all your axios or fetch calls. The login() function here is the "button" that sends the email and password to the POST /api/v1/auth/login "dish" on the kitchen's menu.
+
+Why it's needed: It keeps all your API calls (your "phone calls" to the kitchen) organized in one place, so your "pages" aren't cluttered.
+
+8. context/ (The Central Whiteboard)
+What it is: A big whiteboard in the middle of the dining room for all staff (components) to see.
+
+What's in it: Files like AuthContext.jsx. This is a part of the whiteboard that says, "Current Customer: John Doe (Logged In)".
+
+Why it's needed: It lets you share global information (like "is the user logged in?") with your entire app. This way, the Navbar component can look at the board and decide to show a "Logout" button instead of a "Login" button, all without having to ask.
+
+9. assets/ (The Art & Decorations)
+What it is: The art supply closet.
+
+What's in it: All your non-code files: the restaurant's logo.png, hotel-room.jpg images, custom fonts, etc.
+
+Why it's needed: To keep all your static images and art organized in one place.
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////
+
+
+Welcome to the backend! This is the "Back of House" for our hotel. It's the kitchen, the manager's office, the security posts, and all the staff that make the hotel run. The customer (the frontend/ app) never sees this area; they just interact with it by placing orders and getting results.
+
+Here's who everyone is:
+
+1. server.js (The General Manager)
+Who they are: The General Manager of the entire hotel.
+
+What they do: This is the person who "opens the hotel" (app.listen()). They are responsible for hiring all the departments (importing the routes, middleware, and config) and telling them where to work (app.use(...)).
+
+Why they're needed: This is the main entry point. Without the General Manager, the hotel never opens for business.
+
+2. config/ (The Manager's Office)
+Who they are: The locked manager's office.
+
+What's in it: The safe with the keys and secret information. Your db.js file is like the master key to the database, built using the secret combination from your .env file (which is also in the office).
+
+Why it's needed: You need one, secure, central place to manage your connection to the database.
+
+3. routes/ (The Menu)
+Who they are: The restaurant's Menu.
+
+What's in it: A list of every "dish" a customer can order (/login, /register, /getRooms). It's organized into sections (authRoutes.js, roomRoutes.js).
+
+Why it's needed: This is the "public face" of the kitchen. It simply lists what can be ordered, and tells the waiter (Express) which "Head Chef" (Controller) is in charge of that dish.
+
+4. middleware/ (The Security Guard)
+Who they are: The Security Guard or Bouncer at the kitchen door.
+
+What they do: They stop every order before it gets to the kitchen. The authMiddleware.js file is your main guard. They check the order: "Does this customer have a valid ID (JWT Token)? Are they allowed in this 'staff-only' area?"
+
+Why they're needed: To protect your kitchen (your data) from unauthorized people.
+
+5. controllers/ (The Head Chefs)
+Who they are: The Head Chefs for each "station" (Auth, Rooms, etc.).
+
+What they do: This is the "brain" of the operation. The authController.js is the Head Chef for logins. They take the order from the "Menu" (Route) and manage its creation. They don't cook themselves! They validate the order ("This recipe needs an email and a password!"), and then they yell at the "Line Cooks" (Models) to do the actual work.
+
+Why they're needed: To manage the "business logic." They are the managers who know the steps to complete an order.
+
+6. models/ (The Line Cooks & Recipe Book)
+Who they are: The Line Cooks and the Recipe Book.
+
+What they do: This is the only department that touches the food (the database). The userModel.js is your "Line Cook" for users. They receive simple instructions from the Head Chef ("Find user with this email!"), get the exact recipe (the SQL query), and go to the pantry (the database) to get the ingredients.
+
+Why they're needed: This is the most important separation. It keeps all your "cooking" (your SQL queries) in one place.
+
+7. utils/ (The Kitchen Toolbox)
+Who they are: The shared Toolbox on the wall.
+
+What's in it: All the shared kitchen tools: the "meat tenderizer" (passwordHasher.js) or the "embosser" for creating official "key cards" (jwtGenerator.js).
+
+Why it's needed: So every chef and cook can use the same set of tools without having to own their own. It prevents you from writing the same code over and over.
+
+A Customer's Order (The POST /auth/login Flow)
+A customer (Postman) wants to Login. They go to the routes/authRoutes.js (Menu) and place an order for POST /auth/login.
+
+The Menu says, "The authController is in charge of this."
+
+The order is sent to the controllers/authController.js (Head Chef).
+
+The Head Chef looks at the order: "OK, I have an email and password. This is valid. Now, I need to get the user from the database."
+
+The Head Chef yells to the models/userModel.js (Line Cook): "Run the 'findUserByEmail' recipe for test@example.com!"
+
+The Line Cook opens the config/db.js (Manager's Office) to get the key to the pantry (the database).
+
+The Line Cook runs the SQL query, gets the user data (with the hashed password), and hands it back to the Head Chef.
+
+The Head Chef takes the user's password (1234) and the saved hash ($2b...) and uses the utils/passwordHasher.js (Toolbox) to see if they match.
+
+They match! The Head Chef then grabs the utils/jwtGenerator.js (Toolbox) to create a new "Login Token" (a key card).
+
+The Head Chef "plates" the final dish (the user object and the token) and sends it back as the res.json().
