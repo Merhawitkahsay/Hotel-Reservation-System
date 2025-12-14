@@ -1,3 +1,7 @@
+-- Database Schema for Hotel Management System
+--create Database
+CREATE DATABASE hotel_reservation;
+
 -- ENUM Types MUST be created FIRST - they're dependencies for tables
 CREATE TYPE room_status_enum AS ENUM ('available', 'occupied', 'maintenance', 'cleaning');
 CREATE TYPE reservation_status_enum AS ENUM ('confirmed', 'checked-in', 'checked-out', 'cancelled', 'no-show');
