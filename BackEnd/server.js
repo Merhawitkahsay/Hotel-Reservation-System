@@ -1,5 +1,35 @@
-/*What is it? The "General Manager." This is the main entry point that starts your entire server.
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import pool from './src/config/db.js'; // Connection to database
 
-What goes in it? Code to create the Express app (const app = express()), connect middleware (app.use(express.json())), link to your routes (app.use('/api', routes)), and start the server (app.listen()).
+dotenv.config();
+const app = express();
+const port = process.env.PORT || 3000;
 
-Why is it needed? It's the file you run (e.g., node server.js) to turn the server on. It's the "conductor" that brings all the other pieces together.*/
+app.use(cors());
+app.use(express.json());
+
+// Test Route
+app.get('/', (req, res) => {
+  res.send('Hotel Reservation API is Running!');
+});
+
+// Test DB Connection Route
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ 
+      message: 'Database Connected Successfully!',
+      db_name: process.env.DB_NAME,
+      time: result.rows[0].now 
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Database Connection Failed' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});

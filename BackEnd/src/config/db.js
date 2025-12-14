@@ -1,5 +1,21 @@
-/*What is it? The "Main Water Pipe" to your database.
+import pg from 'pg';
+import dotenv from 'dotenv';
 
-What goes in it? The connection logic for PostgreSQL. It uses the pg library to create a Pool that reads your database credentials from the .env file.
+// Read the .env file
+dotenv.config();
 
-Why is it needed? It provides a single, reusable connection to your database that all your other files can import and use to run queries.*/
+// Create the connection pool
+const pool = new pg.Pool({
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+});
+
+// Helper to log successful connection
+pool.on('connect', () => {
+  console.log('Connection to database established successfully.');
+});
+
+export default pool;
