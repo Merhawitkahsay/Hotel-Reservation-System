@@ -1,0 +1,29 @@
+hotel-reservation-system/
+├── 📁 .gitlab/                    # GitLab CI/CD configuration
+│   ├── 📄 .gitlab-ci.yml          # CI/CD pipeline
+│   └── 📄 merge_request_templates/
+│       └── 📄 default.md
+├── 📁 .vscode/                    # VS Code settings
+│   ├── 📄 settings.json
+│   └── 📄 extensions.json
+├── 📁 backend/                    # Express.js Backend
+├── 📁 frontend/                   # React Frontend
+├── 📁 database/                   # Database scripts & migrations
+├── 📁 docs/                       # Documentation
+├── 📁 scripts/                    # Utility scripts
+├── 📁 docker/                     # Docker configurations
+├── 📄 .env.example               # Environment variables template
+├── 📄 .env.development           # Development environment variables
+├── 📄 .env.production            # Production environment variables
+├── 📄 .gitignore                 # Git ignore rules
+├── 📄 .gitattributes             # Git attributes
+├── 📄 .dockerignore              # Docker ignore rules
+├── 📄 .eslintrc.json             # ESLint configuration
+├── 📄 .prettierrc               # Prettier configuration
+├── 📄 docker-compose.yml         # Docker Compose for development
+├── 📄 docker-compose.prod.yml    # Docker Compose for production
+├── 📄 package.json               # Root package.json (monorepo scripts)
+├── 📄 README.md                  # Project overview
+├── 📄 CHANGELOG.md               # Version history
+├── 📄 CONTRIBUTING.md            # Contribution guidelines
+└── 📄 LICENSE                    # Project license
