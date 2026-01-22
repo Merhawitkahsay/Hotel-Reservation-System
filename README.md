@@ -2,7 +2,7 @@
 
 A full-stack hotel reservation application built with Node.js, Express, PostgreSQL, React, and Tailwind CSS.
 This project allows users to search for available rooms, view room details, make reservations, and manage their bookings. 
-It also includes a (planned) admin dashboard for managing rooms, bookings, and guest information, based on the provided database model.
+It also includes a admin dashboard for managing rooms, bookings, and guest information, based on the provided database model.
 
 ✨ Features
   > User Authentication: Secure user registration and login using JWT (JSON Web Tokens)
