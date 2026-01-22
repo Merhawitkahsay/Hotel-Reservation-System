@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api-endpoints</title>
+</head>
+<body>
+    /**
+ * authRoutes.js - Authentication routes
+ * 
+ * Defines all authentication-related API endpoints.
+ * 
+ * Endpoints:
+ * - POST /register - User registration
+ * - POST /login - User login
+ * - GET /me - Get current user
+ * - POST /refresh - Refresh token
+ * - POST /logout - User logout
+ * - POST /change-password - Change password
+ * 
+ * Dependencies:
+ * - AuthController for business logic
+ * - ValidationMiddleware for input validation
+ * - AuthMiddleware for authentication
+ */
+
+ 
+ /**
+ * guestRoutes.js - Guest management routes
+ * 
+ * Defines all guest-related API endpoints.
+ * 
+ * Endpoints:
+ * - GET    /              - Get all guests (with pagination)
+ * - GET    /search        - Search guests
+ * - GET    /:id           - Get guest by ID
+ * - POST   /              - Create new guest
+ * - PUT    /:id           - Update guest
+ * - DELETE /:id           - Delete guest
+ * 
+ * Dependencies:
+ * - GuestController for business logic
+ * - AuthMiddleware for authentication
+ * - ValidationMiddleware for input validation
+ */
+
+
+ /**
+ * paymentRoutes.js - Payment management routes
+ * 
+ * Defines all payment-related API endpoints.
+ * 
+ * Endpoints:
+ * - GET    /                               - Get all payments
+ * - GET    /reservation/:reservation_id    - Get reservation payments
+ * - GET    /financial-report               - Get financial report
+ * - GET    /:id                            - Get payment by ID
+ * - POST   /                               - Create new payment
+ * - PUT    /:id/process                    - Process payment
+ * - PUT    /:id/refund                     - Process refund
+ * 
+ * Dependencies:
+ * - PaymentController for business logic
+ * - AuthMiddleware for authentication
+ */
+
+
+ /**
+ * reportRoutes.js - Report management routes
+ * 
+ * Defines all report-related API endpoints.
+ * 
+ * Endpoints:
+ * - GET /daily     - Get daily report
+ * - GET /weekly    - Get weekly report
+ * - GET /monthly   - Get monthly report
+ * - GET /custom    - Get custom report
+ * 
+ * Dependencies:
+ * - ReportController for business logic
+ * - AuthMiddleware for authentication
+ */
+
+
+ /**
+ * reservationRoutes.js - Reservation management routes
+ * 
+ * Defines all reservation-related API endpoints.
+ * 
+ * Endpoints:
+ * - GET    /                       - Get all reservations
+ * - GET    /guest/:guest_id        - Get guest's reservations
+ * - GET    /:id                    - Get reservation by ID
+ * - GET    /calculate-price        - Calculate reservation price
+ * - POST   /                       - Create new reservation
+ * - PUT    /:id                    - Update reservation
+ * - PUT    /:id/cancel             - Cancel reservation
+ * - PUT    /:id/check-in           - Check in guest
+ * - PUT    /:id/check-out          - Check out guest
+ * 
+ * Dependencies:
+ * - ReservationController for business logic
+ * - AuthMiddleware for authentication
+ */
+
+
+ /**
+ * roomRoutes.js - Room management routes
+ * 
+ * Defines all room-related API endpoints.
+ * 
+ * Endpoints:
+ * - GET    /                   - Get all rooms
+ * - GET    /available          - Get available rooms
+ * - GET    /types              - Get room types
+ * - GET    /occupancy          - Get occupancy rate
+ * - GET    /:id                - Get room by ID
+ * - POST   /                   - Create new room
+ * - POST   /types              - Create room type
+ * - PUT    /:id                - Update room
+ * 
+ * Dependencies:
+ * - RoomController for business logic
+ * - AuthMiddleware for authentication
+ */
+</body>
+</html>
+
+
+
+
+
+
+

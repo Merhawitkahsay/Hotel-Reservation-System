@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Color Variables */
+:root {
+  --color-primary: #082A4D;   /* Navy Blue */
+  --color-secondary: #D4A017; /* Gold */
+  --color-background: #F5F5F0; /* Soft Beige */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
