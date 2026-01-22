@@ -15,7 +15,7 @@ It also includes a (planned) admin dashboard for managing rooms, bookings, and g
   
   > Booking Management: (Protected Route) Users can view their own booking history
   
-  > Admin Dashboard (Planned): A dedicated interface for managing all rooms, room types, and reservations.
+  > Admin Dashboard (Not-finished): A dedicated interface for managing all rooms, room types, and reservations.
   
   
 🛠️ Tech Stack
